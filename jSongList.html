@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Song List| Home </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="jSongStyle.css">
+        
+        <script lang="javascript">
+            // Creating JSON objects 
+            // Note: Same songs from hw3 - XML SongList
+            var songs = [
+                {
+                    "artists": [
+                        "Smokie"
+                    ],
+                    "title": "Needles And Pins",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1977
+                },
+                {
+                    "artists": [
+                        "The Byrds"
+                    ],
+                    "title": "So, You Want To Be A Rock 'n' Roll Star",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1967
+                },
+                {
+                    "artists": [
+                        "Lynyrd Skynyrd"
+                    ],
+                    "title": "Freebird",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1973
+                },
+                {
+                    "artists": [
+                        "Bill Evans"
+                    ],
+                    "title": "Like Someone In Love",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 2017
+                },
+                {
+                    "artists": [
+                        "Ella Fitzgerald", "Duke Ellington"
+                    ],
+                    "title": "Take The A Train",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 1972
+                },
+                {
+                    "artists": [
+                        "Nat King Cole",
+                        "George Shearing"
+                    ],
+                    "title": "Let There Be Love",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 1972
+                },
+                {
+                    "artists": [
+                        "Mark Ronson",
+                        "Bruno Mars"
+                    ],
+                    "title": "Bruno Mars",
+                    "genres": [
+                        "Funk", "Boogie", "Pop"
+                    ],
+                    "year": 2014
+                },
+                {
+                    "artists": [
+                        "The Strokes",
+                    ],
+                    "title": "Someday",
+                    "genres": [
+                        "Indie"
+                    ],
+                    "year": 2001
+                },
+                {
+                    "artists": [
+                        "The Amazons"
+                    ],
+                    "title": "Black Magic",
+                    "genres": [
+                        "Indie",
+                        "Pop"
+                    ],
+                    "year": 2017
+                },
+                {
+                    "artists": [
+                        "Stevie Wonder"
+                    ],
+                    "title": "Higher Ground",
+                    "genres": [
+                        "Pop"
+                    ],
+                    "year": 1973
+                }
+            ];
+        </script>
+    </head>
+    <body>
+        <h1>Best Songs For Your Band</h1>
+        <!--Serializing-->
+        <p id="serial">  
+        </p>
+        <p id="display">
+        <!--  User friendly display -->
+        </p>
+        <form>
+            <label><b>Filter songs by Genre: </b></label>
+            <select id="filter">
+                <option>-- Select Genre --</option>
+            </select>
+            <button type = "button" onclick = "filter_genre()"> Filter </button>
+        </form>
+        <p id="filtered">
+            <!-- Filtering the data -->
+        </p>
+
+        <script language ="javascript">
+            /* 2. Serialize and display */
+            result = "";
+            for (i = 0; i < songs.length; i++) {
+                result += JSON.stringify(songs[i]) + "<br/>";
+            }
+            document.getElementById("serial").innerHTML = result;
+
+            /* 3. User friendly display */
+            result = "";
+            for (i = 0; i < songs.length; i++) {
+                var obj = songs[i];
+                result += "<b>" + obj.title + "</b> <br/>";
+                result += "Artist: ";
+                for (j = 0; j < obj.artists.length; j++) {
+                    if (j == 0) {
+                        result += obj.artists[j];
+                    }
+                    else {
+                        result += ", " + obj.artists[j];
+                    }
+                }
+                result+= "<br/>";
+                result+= "Genre: ";
+                for (j = 0; j < obj.genres.length; j++) {
+                    if (j == 0){
+                        result+= obj.genres[j];
+                    }
+                    else {
+                        result+= ", " + obj.genres[j];
+                    }
+                }
+                result+= "<br/>";
+                result+= "Released " + obj.year + "<br/>";
+            }
+            document.getElementById("display").innerHTML = result;
+
+            /* 4. Filter the data */
+            function filter_genre() {
+                result = "";
+                var x = document.getElementById("filter");
+                var index = x.selectedIndex;
+                var cur = x.options[index].text;
+                var match = false;
+                for (i = 0; i < songs.length; i++) {
+                    var obj = songs[i];
+                    for (j = 0; j < obj.genres.length; j++) {
+                        if (obj.genres[j] == cur) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    if (match) {
+                        result += "<b>" + obj.title + "</b> <br/>";
+                        result += "Artist: ";
+                        for (j = 0; j < obj.artists.length; j++) {
+                            if (j == 0) {
+                                result += obj.artists[j];
+                            }
+                            else {
+                                result += ", " + obj.artists[j];
+                            }
+                        }
+                        result+= "<br/>";
+                        result+= "Genre: ";
+                        for (j = 0; j < obj.genres.length; j++) {
+                            if (j == 0){
+                                result+= obj.genres[j];
+                            }
+                            else {
+                                result+= ", " + obj.genres[j];
+                            }
+                        }
+                        result+= "<br/>";
+                        result+= "Released " + obj.year + "<br/>";
+                    }
+                    match = false;
+                }
+                document.getElementById("filtered").innerHTML = result;
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+
+            var all = new Set();
+            var opt = "";
+            for (i = 0; i < songs.length; i++) {
+                var obj = songs[i];
+                for (j = 0; j < obj.genres.length; j++) {
+                    var cur = obj.genres[j];
+                    if (! all.has(cur)) {
+                        all.add(cur);
+                        opt += '<option>' + cur + '</option>';
+                    }
+                }
+            }
+            document.getElementById("filter").innerHTML += opt;
+        </script>
+    </body>
+</html>
