@@ -1,0 +1,107 @@
+
+
+songs = [
+                {
+                    "artists": [
+                        "Smokie"
+                    ],
+                    "title": "Needles And Pins",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1977
+                },
+                {
+                    "artists": [
+                        "The Byrds"
+                    ],
+                    "title": "So, You Want To Be A Rock 'n' Roll Star",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1967
+                },
+                {
+                    "artists": [
+                        "Lynyrd Skynyrd"
+                    ],
+                    "title": "Freebird",
+                    "genres": [
+                        "Rock"
+                    ],
+                    "year": 1973
+                },
+                {
+                    "artists": [
+                        "Bill Evans"
+                    ],
+                    "title": "Like Someone In Love",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 2017
+                },
+                {
+                    "artists": [
+                        "Ella Fitzgerald", "Duke Ellington"
+                    ],
+                    "title": "Take The A Train",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 1972
+                },
+                {
+                    "artists": [
+                        "Nat King Cole",
+                        "George Shearing"
+                    ],
+                    "title": "Let There Be Love",
+                    "genres": [
+                        "Jazz"
+                    ],
+                    "year": 1972
+                },
+                {
+                    "artists": [
+                        "Mark Ronson",
+                        "Bruno Mars"
+                    ],
+                    "title": "Bruno Mars",
+                    "genres": [
+                        "Funk", "Boogie", "Pop"
+                    ],
+                    "year": 2014
+                },
+                {
+                    "artists": [
+                        "The Strokes",
+                    ],
+                    "title": "Someday",
+                    "genres": [
+                        "Indie"
+                    ],
+                    "year": 2001
+                },
+                {
+                    "artists": [
+                        "The Amazons"
+                    ],
+                    "title": "Black Magic",
+                    "genres": [
+                        "Indie",
+                        "Pop"
+                    ],
+                    "year": 2017
+                },
+                {
+                    "artists": [
+                        "Stevie Wonder"
+                    ],
+                    "title": "Higher Ground",
+                    "genres": [
+                        "Pop"
+                    ],
+                    "year": 1973
+                }
+            ];
